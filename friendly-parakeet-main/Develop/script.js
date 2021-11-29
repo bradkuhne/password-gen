@@ -13,6 +13,9 @@ console.log ("first and thir lower case letters", pwLCLetters[0], pwLCLetters[2]
 const pwUCLetters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","X","Y","Z"]
 console.log ("first and thir upper case letters", pwUCLetters[0], pwUCLetters[2]);
 
+var charCount = 0;
+var i = 0;
+
 
 
 // prompted for the length of the password between 8 and 128 characters
@@ -21,6 +24,7 @@ function askCount() {
   if (nbrChars != null) {
     if (nbrChars >= 8 & nbrChars <= 128){
       console.log ("entered number is valid:", nbrChars);
+      charCount = nbrChars;
       askCase();
     }
     else {
@@ -97,12 +101,12 @@ function askSpChar() {
     if (spCharYorN == 1){
       console.log ("Special character entered number is valid:", spCharYorN);
       spCharYorN = true
-      writePassword();
+      generatePassword();
     }
     if (spCharYorN == 2){
       console.log ("Special character entered number is valid:", spCharYorN);
       spCharYorN = false;
-      writePassword();
+      generatePassword();
     } else {
       console.log ("Special character entered number is NOT valid:", spCharYorN);
       askSpChar();
@@ -112,6 +116,15 @@ function askSpChar() {
     askSpChar();
   }
 }
+function generatePassword () {
+  console.log ("value of i ", i);
+  console.log ("value of charCount ", charCount );
+  for (let i = 0; i < charCount; i++) {
+     console.log ("Index of # of characters: ", i, " and number entered: ", charCount);
+  }
+     stopWithError();
+}
+// } 
 
 
 
@@ -124,8 +137,11 @@ function askSpChar() {
 // WHEN the password is generated
 // THEN the password is either displayed in an alert or written to the page
 
-
+// Start prompt sequence
 askCount();
+
+
+
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
